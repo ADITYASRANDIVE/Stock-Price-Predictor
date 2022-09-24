@@ -1,0 +1,48 @@
+{% extends 'mystockapp/base.html' %}
+<!-- block is used for overriding specific parts of a template --> 
+
+
+{% block content %}
+
+    <div class="heading">Choose a Stock: </div>
+    <section>
+        
+        <form name="stock_name" action="/" method="get" onsubmit="loadingPage()">
+        <input type="radio" class="btn-check" name="options" value="TSLA" id="option1" autocomplete="off" onchange="this.form.submit()">
+        <label class="btn btn-secondary button-53 {% if stock_name == 'TSLA' %}active{% endif %}"  for="option1">TESLA</label>
+        
+        <input type="radio" class="btn-check" name="options" value="GOOGL" id="option2" autocomplete="off" onchange="this.form.submit()">
+        <label class="btn btn-secondary button-53 {% if stock_name == 'GOOGL' %}active{% endif %}" for="option2">GOOGLE</label>
+        
+        <input type="radio" class="btn-check" name="options" value="AAPL" id="option3" autocomplete="off" onchange="this.form.submit()">
+        <label class="btn btn-secondary button-53 {% if stock_name == 'AAPL' %}active{% endif %}" for="option3">APPLE</label>
+        
+        <input type="radio" class="btn-check" name="options" value="AMZN" id="option4" autocomplete="off" onchange="this.form.submit()">
+        <label class="btn btn-secondary button-53 {% if stock_name == 'AMZN' %}active{% endif %}" for="option4">AMAZON</label>
+        <input type="radio" class="btn-check" name="options" value="TWTR" id="option5" autocomplete="off" onchange="this.form.submit()">
+        <label class="btn btn-secondary button-53 {% if stock_name == 'TWTR' %}active{% endif %}" for="option5">TWITTER</label>
+        <input type="radio" class="btn-check " name="options" value="NVDA" id="option6" autocomplete="off" onchange="this.form.submit()">
+        <label class="btn btn-secondary button-53 {% if stock_name == 'NVDA' %}active{% endif %}" for="option6">NVIDIA</label>
+        <input type="radio" class="btn-check" name="options" value="INTC" id="option7" autocomplete="off" onchange="this.form.submit()">
+        <label class="btn btn-secondary button-53 {% if stock_name == 'INTC' %}active{% endif %}" for="option7">INTEL</label>
+        <input type="radio" class="btn-check" name="options" value="DIS" id="option8" autocomplete="off" onchange="this.form.submit()">
+        <label class="btn btn-secondary button-53 {% if stock_name == 'DIS' %}active{% endif %}"  for="option8">DISNEY</label>
+        
+        </form>
+    </section>
+    {% if valid%}
+    <div> Selected: {{stock_name}} <br> Price: {{price}} $</div>
+    <div class="d-flex plot">
+    <section>
+        
+        <div>Plot:  <br><img src="data:image/png;base64, {{chart|safe}}" alt="" id="img" class="plot-img"></div>
+    </section>
+    <section>
+        <div>Prediction:<br>  <img src="data:image/png;base64, {{pred|safe}}" alt="" id="img" class="plot-img"></div>
+        <div>Predicted price: {{pred_price}} $</div>
+        <div>Recommendation : {{stock_rec}}</div>
+    </section>
+</div>
+    {% endif %}
+
+{% endblock %}

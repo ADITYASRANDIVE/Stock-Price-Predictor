@@ -1,0 +1,39 @@
+{% extends 'mystockapp/base.html' %}
+<!-- block is used for overriding specific parts of a template --> 
+{% block content %}
+    
+
+    <section class="compare">
+        <form name="stock_names" action="/compare" method="get">
+        <select name="stock1" id="stock1">
+            <option value="default">Choose</option>
+            <option value="TSLA">TSLA</option>
+            <option value="GOOGL">GOOGL</option>
+            <option value="AAPL">AAPL</option>
+            <option value="INTC">INTC</option>
+            <option value="DIS">DIS</option>
+            <option value="NVDA">NVDA</option>
+          </select>
+          <select name="stock2" id="stock2">
+            <option value="default">Choose</option>
+            <option value="TSLA">TSLA</option>
+            <option value="GOOGL">GOOGL</option>
+            <option value="AAPL">AAPL</option>
+            <option value="INTC">INTC</option>
+            <option value="DIS">DIS</option>
+            <option value="NVDA">NVDA</option>
+          </select>
+          <input type="submit" value="Compare Now">
+        </form>
+
+    </section>
+    {% if valid %}
+    <section>
+        <div> Selected: {{stock_name1}} <br> Price: {{price1}}</div>
+        <div> Selected: {{stock_name2}} <br> Price: {{price2}}</div>
+        <div>Plot:  <br><img src="data:image/png;base64, {{chart|safe}}" alt="" id="img"></div>
+    </section>
+    {% endif %}
+
+
+{% endblock %}

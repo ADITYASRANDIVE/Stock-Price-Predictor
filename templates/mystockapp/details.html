@@ -1,0 +1,13 @@
+{% extends 'mystockapp/base.html' %}
+<!-- block is used for overriding specific parts of a template --> 
+
+{% block content %}
+<div class="sec"> 
+    <section>
+        Stock: {{ query }}
+        <div>Closing Price: {{price}}</div>
+        <div>{{summary}}</div>
+        
+    </section>
+</div>
+{% endblock %}
